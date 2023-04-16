@@ -1,3 +1,24 @@
+#!/bin/bash
+echo "===yt-Whisper-srt=== (start!)"
+if command -v ffmpeg &> /dev/null
+then
+    echo "ffmpeg is installed."
+else
+    echo "ffmpeg is not installed."
+    #TODO:download ... (?)
+fi
+if [[ -f "yt-dlp_linux" && -r "yt-dlp_linux" && -w "yt-dlp_linux" && -x "yt-dlp_linux" ]]; then
+  echo "File 'yt-dlp_linux' exists and has read, write, and execute permissions."
+else
+  echo "File 'yt-dlp_linux' either does not exist or does not have the required permissions."
+  wget --no-check-certificate https://github.com/yt-dlp/yt-dlp/releases/download/2023.03.04/yt-dlp_linux
+fi
+if [ -z "$1" ]; then
+  echo "Usage: $0 <filename>"
+  exit 1
+fi
+
+echo "File '$1' exists."
 echo "===yt-Whisper-srt=== (download translater...)"
 #git clone https://github.com/Coolshanlan/HighlightTranslator
 echo "===yt-Whisper-srt=== (doing yt-dlp...)"
