@@ -27,5 +27,28 @@ yt-dlp_linux
 
 # ig PD
 *.srt
+*.srttx
 *.mp3
 *.mp4
+
+master.zip
+HighlightTranslator-master/
+
+book_icon.ico
+CambridgeTranslate.py
+config_defult.json
+config.json
+GoogleTranslate.py
+HighlightTranslator.py
+image/
+language.txt
+LICENSE
+log.txt
+requirements.txt
+speech_file/
+tesseract/
+tk.js
+tk.py
+TranslatecomTranslate.py
+VirtualDesktopAccessor11.dll
+VirtualDesktopAccessor.dll

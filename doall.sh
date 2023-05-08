@@ -14,7 +14,7 @@ else
   wget --no-check-certificate https://github.com/yt-dlp/yt-dlp/releases/download/2023.03.04/yt-dlp_linux && chmod 777 ./yt-dlp_linux
 fi
 if [ -z "$1" ]; then
-  echo "Usage: $0 <filename>"
+  echo "Usage: $0 <URL>"
   exit 1
 fi
 

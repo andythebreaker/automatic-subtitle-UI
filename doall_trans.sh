@@ -14,13 +14,31 @@ else
   wget --no-check-certificate https://github.com/yt-dlp/yt-dlp/releases/download/2023.03.04/yt-dlp_linux && chmod 777 ./yt-dlp_linux
 fi
 if [ -z "$1" ]; then
-  echo "Usage: $0 <filename>"
+  echo "Usage: $0 <URL>"
   exit 1
 fi
+if [ -f ./master.zip ]; then
+    echo "master.zip exists in the current directory"
+    rm HighlightTranslator-master
+    unzip master.zip
+    cd HighlightTranslator-master
+    rm README.md
+    cd ..
+    mv HighlightTranslator-master/* .
+else
+    echo "master.zip does not exist in the current directory"
+    echo "===yt-Whisper-srt=== (download translater...)"
+    wget https://github.com/Coolshanlan/HighlightTranslator/archive/refs/heads/master.zip
+    rm HighlightTranslator-master
+    unzip master.zip
+    cd HighlightTranslator-master
+    rm README.md
+    cd ..
+    mv HighlightTranslator-master/* .
+fi
+
 
 echo "URL '$1' exists."
-echo "===yt-Whisper-srt=== (download translater...)"
-#git clone https://github.com/Coolshanlan/HighlightTranslator
 echo "===yt-Whisper-srt=== (doing yt-dlp...)"
 ./yt-dlp_linux -f mp4 "$1" | grep Destination > tmp.txt
 echo "===yt-Whisper-srt=== (doing ffmpeg mp3...)"
