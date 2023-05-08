@@ -1,0 +1,31 @@
+# ignore files with .log extension
+*.log
+
+# ignore directories named node_modules
+node_modules/
+
+# ignore files named .DS_Store (macOS)
+.DS_Store
+
+# ignore files with .pyc extension (Python)
+*.pyc
+
+# ignore files with .class extension (Java)
+*.class
+
+# ignore files with .exe extension (Windows)
+*.exe
+*.o
+
+# ig tmp
+tmp.*
+
+# ig known garbage
+
+utf8
+yt-dlp_linux
+
+# ig PD
+*.srt
+*.mp3
+*.mp4

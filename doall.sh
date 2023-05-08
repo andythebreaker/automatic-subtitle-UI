@@ -11,18 +11,18 @@ if [[ -f "yt-dlp_linux" && -r "yt-dlp_linux" && -w "yt-dlp_linux" && -x "yt-dlp_
   echo "File 'yt-dlp_linux' exists and has read, write, and execute permissions."
 else
   echo "File 'yt-dlp_linux' either does not exist or does not have the required permissions."
-  wget --no-check-certificate https://github.com/yt-dlp/yt-dlp/releases/download/2023.03.04/yt-dlp_linux
+  wget --no-check-certificate https://github.com/yt-dlp/yt-dlp/releases/download/2023.03.04/yt-dlp_linux && chmod 777 ./yt-dlp_linux
 fi
 if [ -z "$1" ]; then
   echo "Usage: $0 <filename>"
   exit 1
 fi
 
-echo "File '$1' exists."
+echo "URL '$1' exists."
 echo "===yt-Whisper-srt=== (download translater...)"
 #git clone https://github.com/Coolshanlan/HighlightTranslator
 echo "===yt-Whisper-srt=== (doing yt-dlp...)"
-./yt-dlp_linux -f mp4 https://www.youtube.com/watch?v=AjYdqCq2ezs | grep Destination > tmp.txt
+./yt-dlp_linux -f mp4 "$1" | grep Destination > tmp.txt
 echo "===yt-Whisper-srt=== (doing ffmpeg mp3...)"
 awk '{$1=$2=""; print $0}' tmp.txt | sed "s/^[ \t]*//" | xargs -I {} ffmpeg -i {} -vn -qscale:a 0 {}.mp3
 echo "===yt-Whisper-srt=== (doing mp3 rename...)"
